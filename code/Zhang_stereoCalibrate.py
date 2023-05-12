@@ -44,13 +44,14 @@ for i in range(1,pic_num+1):
 #ret, mtx_left, dist_left, mtx_right, dist_right, R, T, E, F = cv2.stereoCalibrate(objpoints, left_imgpoints, right_imgpoints, None, None,None, None,(1440,1920))
 
 ###
-data = np.load('./data/left_calibration.npz')
-mtx_left = data['camera_matrix']
-dist_left = data['distortion_coeffs']
+camera_left_data  = np.load('../data/calibrate_data/left_calibration.npz')
+camera_right_data = np.load('../data/calibrate_data/right_calibration.npz')
 
-data = np.load('./data/right_calibration.npz')
-mtx_right = data['camera_matrix']
-dist_right = data['distortion_coeffs']
+mtx_left = camera_left_data['camera_matrix']
+dist_left = camera_left_data['distortion_coeffs']
+
+mtx_right = camera_right_data['camera_matrix']
+dist_right = camera_right_data['distortion_coeffs']
 
 ret, mtx_left, dist_left, mtx_right, dist_right, R, T, E, F = cv2.stereoCalibrate(objpoints, left_imgpoints, right_imgpoints, mtx_left, dist_left,mtx_right, dist_right,(1440,1920))
 
@@ -65,10 +66,11 @@ if ret:
     print('E =', E)
     print('F =', F)
     # 创建一个numpy数组来保存标定参数
-    data = np.array([ret, mtx_left, dist_left, mtx_right, dist_right, R, T, E, F])
+    #data = np.array([ret, mtx_left, dist_left, mtx_right, dist_right, R, T, E, F])
 
     # 保存标定数据到文件
-    np.save('./data/stereo_calibration.npy', data)
+    np.save('../data/calibrate_data/stereo_calibration.npz', ret = ret,mtx_left=mtx_left,dist_left = dist_left,
+                            mtx_right = mtx_right,dist_right = dist_right, R = R,T = T,E = E,F = F)
 else:
     print('error')
 

@@ -1,5 +1,7 @@
 import os
 
+#帮助重命名图片文件，一般只在单目标定时有用
+
 # 获取当前文件夹下所有图片的文件名
 files = [f for f in os.listdir('./img/left') if os.path.isfile(f) and f.lower().endswith('.jpg')]
 

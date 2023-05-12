@@ -43,5 +43,5 @@ ret, camera_matrix, distortion_coeffs, rvecs, tvecs = cv2.calibrateCamera(object
 
 # Save the camera matrix and distortion coefficients to a file
 
-np.savez(f'./data/{id}_calibration.npz', camera_matrix=camera_matrix, distortion_coeffs=distortion_coeffs)
-print(f'finish calibration, saved to {id}_calibration.npz')
+np.savez(f'../data/calibrate_data/{id}_calibration.npz', camera_matrix=camera_matrix, distortion_coeffs=distortion_coeffs)
+print(f'finish calibration, saved as /data/calibrate_data/{id}_calibration.npz')

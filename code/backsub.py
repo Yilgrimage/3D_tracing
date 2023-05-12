@@ -2,6 +2,7 @@ from __future__ import print_function
 import cv2 as cv
 import numpy as np
 
+#用于提取运动中圆环的几何中心，主要是将圆环视为圆盘，通过两个相机拍摄所得的‘圆盘中心’来确定‘中心的轨迹’
 
 history = 200  # 训练帧数
 dist2Threshold = 2000.0  # 阈值距离
@@ -13,6 +14,9 @@ backSub = cv.createBackgroundSubtractorKNN(history=history, dist2Threshold=dist2
 capture = cv.VideoCapture('video_2.mp4')
 
 capture.set(cv.CAP_PROP_AUTO_WB, 0)
+
+dots_array = []
+
 while True:
     ret, frame = capture.read()
     if frame is None:
@@ -78,7 +82,7 @@ while True:
         
         cv.drawContours(contour_img, [hull], 0, (0, 255, 0), 2)
         cv.circle(contour_img, (cx, cy), 5, (0, 0, 255), -1)
-
+    dots_array.append((cx,cy))
     # 显示图像
     cv.imshow('Frame', frame)
     # cv.imshow('FG Mask row', fgMask_row)

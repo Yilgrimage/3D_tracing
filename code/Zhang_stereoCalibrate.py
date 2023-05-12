@@ -24,8 +24,8 @@ criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
 for i in range(1,pic_num+1):
     #读取两个图片
-    left_images = cv2.imread('./img/left/' + str(i) + '.jpg')
-    right_images = cv2.imread('./img/right/' + str(i) + '.jpg')
+    left_images = cv2.imread(f'../img/zhang/left/{i}.jpg')
+    right_images = cv2.imread(f'../img/zhang/right/{i}.jpg')
     #灰度化
     left_gray = cv2.cvtColor(left_images, cv2.COLOR_BGR2GRAY)
     right_gray = cv2.cvtColor(right_images, cv2.COLOR_BGR2GRAY)

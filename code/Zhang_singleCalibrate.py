@@ -19,7 +19,7 @@ image_points_list = []
 # Capture a set of calibration images
 for i in range(1,num_images + 1):
     # Load the image and convert to grayscale
-    img  = cv2.imread(f'./img/{id}/{i}.jpg')
+    img  = cv2.imread(f'../img/zhang/{id}/{i}.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Find the corners in the image

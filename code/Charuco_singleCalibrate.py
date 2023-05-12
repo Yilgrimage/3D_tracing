@@ -24,9 +24,11 @@ obj_points = [] # 3D points
 
 pic_num = 10
 
+id = 'right'
+
 # 遍历标定图像
 for i in range(1,pic_num + 1):
-    img = cv2.imread(f'./img/charuco/left/{i}.jpg')
+    img = cv2.imread(f'../img/charuco/{id}/{i}.jpg')
     corners, ids = get_corners(img, board)
     if corners is not None and ids is not None:
         img_points.append(corners)
@@ -44,4 +46,4 @@ print('R =', rvecs)
 print('T =', tvecs)
 
 # 保存标定结果
-np.savez('./data/Calibration.npz', camera_matrix=camera_matrix, distortion_coefficients=distortion_coefficients)
+np.savez('../data/calibrate_data/{id}_calibration.npz', camera_matrix=camera_matrix, distortion_coefficients=distortion_coefficients)

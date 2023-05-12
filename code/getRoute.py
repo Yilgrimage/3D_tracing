@@ -118,7 +118,7 @@ while True:
     if cx_left is not None and cx_right is not None:
         #dots_array.append([cx_left, cy_left, cx_right, cy_right])
         x,y,z = get3Dpoint(cx_left, cy_left, cx_right, cy_right,K1,D1,K2,D2,R,T)
-        print(x,y,z)
+        print('dots:'+ x,y,z)
     keyboard = cv.waitKey(1)
     if keyboard == 'q' or keyboard == 27:
         break

@@ -169,8 +169,8 @@ def start_cameras():
 
         if keyCode == ord('s'):#shot，按s保存图片
             pic_count+=1
-            cv2.imwrite('./pic/left'+str(pic_count)+'.jpg', left_image)
-            cv2.imwrite('./pic/right'+str(pic_count)+'.jpg', right_image)
+            cv2.imwrite('../img/zhang/left/{pic_count}.jpg', left_image)
+            cv2.imwrite('../img/zhang/right/{pic_count}.jpg', right_image)
             # break
         if keyCode == ord('r'):#record,按r开始/录像
             if record == False:
